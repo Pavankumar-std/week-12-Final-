@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/applicationController'),{protect,allowRoles}=require('../middleware/auth');r.post('/',protect,allowRoles('candidate'),c.apply);r.get('/my',protect,allowRoles('candidate'),c.mine);r.get('/job/:jobId',protect,allowRoles('recruiter','admin'),c.forJob);module.exports=r;

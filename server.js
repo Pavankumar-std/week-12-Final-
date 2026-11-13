@@ -1,0 +1,1 @@
+require('dotenv').config();const app=require('./app'),db=require('./config/db');db().then(()=>app.listen(process.env.PORT||5000,()=>console.log('CareerConnect API started'))).catch(e=>{console.error(e.message);process.exit(1)});

@@ -1,0 +1,1 @@
+describe('test setup',()=>{test('Jest is configured',()=>expect(true).toBe(true))});

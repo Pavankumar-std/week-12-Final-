@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "CareerConnect API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": "PASTE_JWT"
+    },
+    {
+      "key": "jobId",
+      "value": "PASTE_JOB_ID"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Demo Candidate\", \"email\": \"candidate@example.com\", \"password\": \"DemoPass123\", \"role\": \"candidate\"}"
+        },
+        "url": "{{baseUrl}}/api/auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"candidate@example.com\", \"password\": \"DemoPass123\"}"
+        },
+        "url": "{{baseUrl}}/api/auth/login"
+      }
+    },
+    {
+      "name": "List jobs",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/jobs?q=developer&location=remote&type=Internship&page=1&limit=10"
+      }
+    },
+    {
+      "name": "Apply",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"jobId\": \"{{jobId}}\", \"coverLetter\": \"Interested in this role.\"}"
+        },
+        "url": "{{baseUrl}}/api/applications"
+      }
+    },
+    {
+      "name": "My applications",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/applications/my"
+      }
+    }
+  ]
+}

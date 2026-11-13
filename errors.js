@@ -1,0 +1,1 @@
+exports.notFound=(req,res)=>res.status(404).json({message:'Route not found'});exports.errorHandler=(err,req,res,next)=>res.status(err.statusCode|| (err.name==='ValidationError'?400:500)).json({message:err.statusCode?err.message:(err.name==='ValidationError'?err.message:'Internal server error')});
